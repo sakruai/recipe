@@ -1,0 +1,10 @@
+<% @lists.each do |list| %>
+  <div>
+    <%= image_tag list.get_image %>
+    <p>レシピ名：<%= list.name %></p>
+    <p>値段：<%= list.price %></p>
+    <p>説明：<%= list.explanation %></p>
+    <p>ユーザーネーム：<%= list.user.name %></p>
+    <p><%= link_to "#{link.post_comments.count} コメント", link_path(link.id) %></p>
+  </div>
+<% end %>

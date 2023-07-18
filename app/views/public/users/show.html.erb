@@ -1,0 +1,20 @@
+<!-- ユーザーの詳細 -->
+<div>
+  <h3><%= @user.name %></h3>
+    <p><%= link_to "プロフィール編集", edit_user_path %></p>
+</div>
+
+<!-- ユーザーの投稿一覧 -->
+
+<% @lists.each do |list| %>
+<div>
+  <%= link_to list_path(list.id) do %>
+    <%= image_tag list.get_image %>
+  <% end %>
+  <p>ショップ名：<%= list.name %></p>
+  <p>値段：<%= list.price %></p>
+  <p>説明：<%= list.explanation %></p>
+  <p>ユーザーネーム：<%= list.user.name %></p>
+  <p><%= link_to "#{list.post_comments.count} コメント", list_path(list.id) %></p>
+</div>
+<% end %>
