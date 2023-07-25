@@ -21,6 +21,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     root to: "homes#top"
    resources :lists, only: [:index, :new, :create, :show, :edit, :update, :destroy]do
    resources :post_comments, only: [:create, :destroy]
+   resources :favorites, only: [:create, :destroy]
    end
    resources :users, only: [:show, :edit, :update]
   end

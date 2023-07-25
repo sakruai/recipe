@@ -1,1 +1,10 @@
-<h1>aaa</h1>
+<% @lists.each do |list| %>
+  <div>
+    <%= image_tag list.get_image %>
+    <p>レシピ名：<%= list.name %></p>
+    <p>値段：<%= list.price %></p>
+    <p>説明：<%= list.explanation %></p>
+    <p>ユーザーネーム：<%= list.user.name %></p>
+  
+  </div>
+<% end %>
