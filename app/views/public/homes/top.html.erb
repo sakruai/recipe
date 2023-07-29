@@ -1,10 +1,33 @@
-<% @lists.each do |list| %>
-  <div>
-    <%= image_tag list.get_image %>
-    <p>レシピ名：<%= list.name %></p>
-    <p>値段：<%= list.price %></p>
-    <p>説明：<%= list.explanation %></p>
-    <p>ユーザーネーム：<%= list.user.name %></p>
-  
+<div class='container' >
+  <div class='row'>
+    <div class='col'>
+    
+    
+      <h2>レシピ一覧</h2>
+        <table>
+         <thead>
+          <tr>
+            <th></th>
+            <th>レシピ名</th>
+            <th>値段</th>
+            <th>説明</th>
+            <th>タグ名</th>
+            <th>ユーザーネーム</th>
+          </tr>
+         </thead>
+         <% @lists.each do |list| %>
+          <tbody>
+            <tr>
+               <td><%= image_tag list.get_image, :size =>'100x100' %></td>
+               <td><%= list.name %></td>
+               <td><%= list.price %></td>
+               <td><%= list.explanation %></td>
+               <td><%= list.category %></td>
+               <td><%= list.user.name %></td>
+            </tr>
+          </tbody>
+          <% end %>
+    </div>
   </div>
-<% end %>
+ </div>
+</div>

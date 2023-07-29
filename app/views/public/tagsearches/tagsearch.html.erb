@@ -1,0 +1,12 @@
+<h2><%= @model %>s search for "<%= @word %>"</h2>
+
+<% @lists.each do |list| %>
+  <div>
+    <%= image_tag list.get_image, :size =>'100x100' %>
+    <p>レシピ名：<%= list.name %></p>
+    <p>値段：<%= list.price %></p>
+    <p>説明：<%= list.explanation %></p>
+    <p>ユーザーネーム：<%= list.user.name %></p>
+    <p><%= link_to "#{list.post_comments.count} コメント", list_path(list.id) %></p>
+  </div>
+<% end %>

@@ -1,20 +1,42 @@
 <!-- ユーザーの詳細 -->
-<div>
-  <h3><%= @user.name %></h3>
-    <p><%= link_to "プロフィール編集", edit_user_path %></p>
-</div>
-
+<div class = "container" >
+    <div class = "row" >
+     <div class ="col-md-3">
+       <h4 class="font-weight-bold col-3 ml-4 mb-4 text-nowrap"><%= @user.name %>さんのページ</h4>
+     </div>
+     <div class="d-flex flex-row">
+      <div class="mr-5" ><strong><%= link_to"ユーザー情報を編集する", edit_user_path(current_user) %></strong></div>
+       <div class="mr-5" ><strong><%= link_to "いいねした投稿", favorites_user_path(@user) %></strong></div>
+     </div>
 <!-- ユーザーの投稿一覧 -->
+    
+      <table>
+         <thead>
+           <tr>
+            <th></th>
+             <th>レシピ名</th>
+             <th>値段</th>
+             <th>説明</th>
+             <th>タグ名</th>
+             <th></th>
+            </tr>
+          </thead>
+          <% @lists.each do |list| %>
+          <tbody>
+           <tr>
+              <th><%= link_to list_path(list.id) do %>
+                 <%= image_tag list.get_image, :size =>'100x100'%>
+                 <% end %></th>
+              <th><%= link_to list.name, list_path(list.id)%></th>
+              <th><%= list.price %></th>
+              <th><%= list.explanation %></th>
+              <th><%= list.category %></th>
+              <th><%= link_to "#{list.post_comments.count} コメント", list_path(list.id) %></th>
+           </tr>
+          </tbody>
+      </table>
+    <% end %>
+   </div>
+  </div>
 
-<% @lists.each do |list| %>
-<div>
-  <%= link_to list_path(list.id) do %>
-    <%= image_tag list.get_image %>
-  <% end %>
-  <p>ショップ名：<%= list.name %></p>
-  <p>値段：<%= list.price %></p>
-  <p>説明：<%= list.explanation %></p>
-  <p>ユーザーネーム：<%= list.user.name %></p>
-  <p><%= link_to "#{list.post_comments.count} コメント", list_path(list.id) %></p>
-</div>
-<% end %>
+

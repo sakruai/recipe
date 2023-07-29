@@ -1,0 +1,33 @@
+<div class='container' >
+  <div class='row'>
+    <div class='col'>
+<h2>会員一覧</h2>
+  <table>
+   <thead>
+    <tr>
+      <th>会員ID</th>
+      <th>氏名</th>
+      <th>メールアドレス</th>
+      <th>ステータス</th>
+    </tr>
+   </thead>
+     <tbody>
+<% @users.each do |user| %>
+   <tr>
+    <td><%= link_to user.id, admin_user_path(user.id) %></td>
+    <td><%= link_to user.name, admin_user_path(user.id) %></td>
+    <td><%= user.email %></td>
+    <td><% if user.is_active %>
+    有効
+   <% else %>
+   退会済み
+    <% end %></td>
+  </tr>
+  <% end %>
+  
+  </tbody>
+</table>
+
+ </div>
+  </div>
+</div>

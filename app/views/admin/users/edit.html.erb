@@ -1,0 +1,30 @@
+<div class='container' >
+  <div class='row'>
+    <div class='col'>
+      <%= form_with model: @user, url: admin_user_path(@user) do |f| %>
+      <table>
+      <thead>
+        <th><h2><%= @user.name %>さんの会員情報編集</h2></th>
+        </thead>
+        <p></p>
+        <p></p>
+        <tbody>
+          <div class="form-group">
+            <tr><td>会員ID</td><td><%= @user.id %></td></tr>
+            <tr><td>氏名</td>
+            <td><%= f.text_field :name %></td></tr>
+            <tr><td>メールアドレス</td><td><%= f.text_field :email %></td></tr>
+            <tr><td>会員ステータス</td>
+                <td>
+                <%= f.radio_button :is_active, :true %>
+                <%= f.label :true, "有効" %>
+                <%= f.radio_button :is_active, :false %>
+                <%= f.label :false, "退会" %></td></tr>
+             <tr><td><%= f.submit '変更内容を保存', class: "btn btn-success" %></td></tr>
+          </div>
+        </tbody>
+        </table>
+     <% end %>
+   </div>
+  </div>
+</div>

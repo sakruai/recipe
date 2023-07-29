@@ -1,16 +1,18 @@
+<h2>レシピの詳細</h2>
 <div>
-  <%= image_tag @list.get_image %>
+  <%= image_tag @list.get_image, :size =>'200x200' %>
   <p>レシピ名：<%= @list.name %></p>
   <p>値段：<%= @list.price %></p>
   <p>説明：<%= @list.explanation %></p>
   <p>ユーザーネーム：<%= @list.user.name %></p>
   <p>投稿日：<%= @list.created_at.strftime('%Y/%m/%d') %></p>
+  <div><%= link_to "編集", edit_list_path(@list.id) %></div>
     <% if @list.user == current_user %>
     <%= link_to "削除", list_path(@list), method: :delete %>
   <% end %>
    <% if @list.favorited_by?(current_user) %>
     <p>
-      <%= link_to list_favorites_path(@list), method: :delete do %>
+      <%= link_to list_favorite_path(@list), method: :delete do %>
         ♥<%= @list.favorites.count %> いいね
       <% end %>
     </p>
@@ -34,6 +36,7 @@
     <% end %>
   <% end %>
 </div>
+
 <div>
   <%= form_with model: [@list, @post_comment] do |f| %>
     <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>

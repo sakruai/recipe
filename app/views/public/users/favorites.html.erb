@@ -1,0 +1,27 @@
+<p>いいねした投稿一覧</p>
+ <table>
+    <thead>
+        <tr>
+            <th></th>
+             <th>レシピ名</th>
+             <th>値段</th>
+             <th>説明</th>
+             <th>タグ名</th>
+             <th></th>
+            </tr>
+       </thead>
+       <% @lists.each do |list| %>
+       <tbody>
+          <tr>
+            <th><%= link_to list_path(list.id) do %>
+                 <%= image_tag list.get_image, :size =>'100x100'%>
+                 <% end %></th>
+            <th><%= link_to list.name, list_path(list.id)%></th>
+            <th><%= list.price %></th>
+            <th><%= list.explanation %></th>
+            <th><%= list.category %></th>
+            <th><%= link_to "#{list.post_comments.count} コメント", list_path(list.id) %></th>
+           </tr>
+          </tbody>
+      </table>
+    <% end %>

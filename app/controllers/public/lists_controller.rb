@@ -14,10 +14,20 @@ class Public::ListsController < ApplicationController
   def index
     @lists = List.all
   end
-
+  
   def show
     @list = List.find(params[:id])
     @post_comment = PostComment.new
+  end
+  
+  def edit
+    @list = List.find(params[:id])
+  end
+  
+  def update
+    list = List.find(params[:id])
+    list.update(list_params)
+    redirect_to list_path(list.id) 
   end
   
   def destroy
@@ -30,6 +40,6 @@ class Public::ListsController < ApplicationController
   private
 
   def list_params
-    params.require(:list).permit(:name, :image, :price, :explanation)
+    params.require(:list).permit(:name, :image, :price, :explanation,:category)
   end
 end

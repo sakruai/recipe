@@ -1,12 +1,33 @@
-<h1>レシピ投稿フォーム</h1>
-<%= form_with model: @list do |f| %>
-  <h4>画像</h4>
-  <%= f.file_field :image, accept: "image/*" %>
-  <h4>レシピ名</h4>
-  <%= f.text_field :name %>
-  <h4>値段</h4>
-  <%= f.text_field :price %>
-  <h4>説明</h4>
-  <%= f.text_area :explanation %>
-  <%= f.submit '投稿' %>
-<% end %>
+<div class='container' >
+  <div class='row'>
+    <div class='col'>
+     <h2>レシピ投稿フォーム</h2>
+      <%= form_with model: @list do |f| %>
+      <table>
+        <tr>
+          <th>画像</th>
+          <td><%= f.file_field :image, accept: "image/*" %></td>
+        </tr>
+        <tr>
+          <th>レシピ名</th>
+          <td><%= f.text_field :name %></td>
+        </tr>
+        <tr>
+          <th>値段</th>
+          <td><%= f.text_field :price %></td>
+        </tr>
+        <tr>
+          <th>料理方法</th>
+          <td><%= f.text_area :explanation %></td>
+        </tr>
+        <tr>
+          <th>タグ名</th>
+          <td><%= f.text_field :category,class: 'form-control list_category' %></td>
+        </tr>
+       
+        </table>
+         <%= f.submit '投稿' %>
+     <% end %>
+  </div>
+ </div>
+</div>
